@@ -35,5 +35,3 @@ python manage.py runserver
 ========
 Windows:
 ========
-
-2. python shell?
