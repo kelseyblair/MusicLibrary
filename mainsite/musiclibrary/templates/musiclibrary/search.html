@@ -1,0 +1,46 @@
+{% extends 'musiclibrary/index.html' %}
+
+{% block content %}
+<form method="GET" action="{% url 'musiclibrary:searchresults' pk %}">
+	<input type="text" name="q">
+	<input type="submit" value="Search">
+</form>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if results %}
+<p>Search Results for: {{ query }}</p>
+<table>
+	<tr>
+<!-- 		<th><a href="?sort=song_name">Title</a></th>
+		<th><a href="?sort=artist_name">Artist</a></th>
+		<th><a href="?sort=album_name">Album</a></th> -->
+		<th>Title</th>
+		<th>Artist</th>
+		<th>Album</th>
+		<th>Delete?</th>
+	</tr>
+{% for result in results %}
+	<tr>
+		<td>{{ result.song_name }}</td>
+		<td>{{ result.artist_name }}</td>
+		<td>{{ result.album_name }}</td>
+		<td><input type="checkbox" name="deleteitem"></td>
+
+	</tr>
+{% endfor %}
+</table>
+<input type="button" name="save" value="Save Changes">
+{% elif request.GET.q %}
+	<p>"{{ request.GET.q }}" not found</p>
+{% else %}
+
+{% endif %}
+
+{% endblock %}

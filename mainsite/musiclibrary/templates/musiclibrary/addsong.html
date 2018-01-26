@@ -1,0 +1,18 @@
+{% extends 'musiclibrary/index.html' %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form name="newsong" method="POST" action="/addsong">
+	{% csrf_token %}
+
+	{{ form.as_p }}
+	<input type="submit" name="add_song" value="Add Song">
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'musiclibrary/index.html' %}
+
+{% block content %}
+	<table>
+		<tr>
+			<th><a href="?sort=song_name">Title</a></th>
+			<th><a href="?sort=artist_name">Artist</a></th>
+			<th><a href="?sort=album_name">Album</a></th>
+			<th>Delete?</th>
+		</tr>
+		<form method="POST" name="deletesongs" action='list' >
+	{% csrf_token %}
+
+	{% for song in songs %}
+		<tr>
+			<td>{{ song.song_name }}</td>
+			<td>{{ song.artist_name }}</td>
+			<td>{{ song.album_name }}</td>
+			<td><input type="checkbox" name="delete" value="{{ song.id }}"></td>
+
+		</tr>
+	{% endfor %}
+	</table>
+	<br>
+	<input type="submit" name="del" value="Delete Items">
+	</form>
+
+{% endblock %}

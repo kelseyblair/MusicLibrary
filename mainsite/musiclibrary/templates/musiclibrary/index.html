@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Music Library</title>
+</head>
+<body>
+	<header>
+		<a href="{% url 'musiclibrary:search' %}">Search Library</a>
+		<a href="{% url 'musiclibrary:list' %}">View Library</a>
+		<a href="{% url 'musiclibrary:addsong' %}">Add Song</a>
+		
+	</header>
+
+	<section>
+		<br>
+		{% block content %}
+
+		{% endblock %}
+
+	</section>
+		
+</body>
+</html>
