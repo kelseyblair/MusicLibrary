@@ -1,7 +1,7 @@
-#Installation Instructions:
+# Installation Instructions:
 
 
-##Unix:
+## Unix:
 
 
 1. Clone the respository: 
@@ -50,5 +50,5 @@ python manage.py runserver
 ```
 * In your web broswer, navigate to 127.0.0.1:8000
 
-##Windows:
+## Windows:
 
